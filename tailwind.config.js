@@ -1,3 +1,5 @@
+const { fontFamily } = require("tailwindcss/defaultTheme");
+
 /** @type {import('tailwindcss').Config} */
 
 module.exports = {
@@ -8,6 +10,9 @@ module.exports = {
 	],
 	theme: {
 		extend: {
+			fontFamily: {
+				sans: ["var(--font-montserrat)", ...fontFamily.sans],
+			},
 			colors: {
 				cultured: "#f5f5f5ff",
 				"raisin-black": "#24262eff",
