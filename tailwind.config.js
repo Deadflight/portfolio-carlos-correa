@@ -1,4 +1,4 @@
-// const { fontFamily } = require("tailwindcss/defaultTheme");
+const { fontFamily } = require("tailwindcss/defaultTheme");
 
 /** @type {import('tailwindcss').Config} */
 
@@ -11,13 +11,17 @@ module.exports = {
 	],
 	theme: {
 		extend: {
-			// fontFamily: {
-			// 	sans: ["var(--font-montserrat)", ...fontFamily.sans],
-			// },
+			fontFamily: {
+				sans: ["var(--font-montserrat)", ...fontFamily.sans],
+			},
 			colors: {
 				primary: "#FFFF",
 				secondary: "#24262eff",
 				tertiary: "#2ac5f4ff",
+				twitter: "#1DA1F2",
+				facebook: "#4267B2",
+				linkedin: " #0e76a8",
+				github: "#171515",
 			},
 			animation: {
 				"spin-slow": "spin 4s linear infinite",

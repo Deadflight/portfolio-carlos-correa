@@ -1,10 +1,84 @@
 import React from "react";
-import { BsFacebook, BsGithub, BsLinkedin, BsTwitter } from "react-icons/bs";
-import { NAV_LINKS, SOCIAL_ICONS } from "../../../constants";
-import { ISocialIcon } from "../../../interfaces";
 import { SocialIconsList } from "../SocialIcons";
 import { ThemeButton } from "../ThemeButton";
 import { NavHeader, NavList } from "./";
+
+import {
+	AiOutlineContacts,
+	AiOutlineHome,
+	AiOutlineLayout,
+	AiOutlineUser,
+} from "react-icons/ai";
+import { ILink, ISocialIcon } from "../../../interfaces";
+import { BsGithub, BsLinkedin, BsTwitter, BsFacebook } from "react-icons/bs";
+
+const NAV_LINKS: ILink[] = [
+	{
+		name: "Home",
+		to: "/",
+		icon: <AiOutlineHome size={30} className="dark:fill-primary md:hidden" />,
+	},
+	{
+		name: "Projects",
+		to: "/projects",
+		icon: <AiOutlineLayout size={30} className="dark:fill-primary md:hidden" />,
+	},
+	{
+		name: "About",
+		to: "/about",
+		icon: <AiOutlineUser size={30} className="dark:fill-primary md:hidden" />,
+	},
+	{
+		name: "Contact",
+		to: "/contact",
+		icon: (
+			<AiOutlineContacts size={30} className=" dark:fill-primary md:hidden" />
+		),
+	},
+];
+
+const SOCIAL_ICONS: ISocialIcon[] = [
+	{
+		name: "github",
+		icon: (
+			<BsGithub
+				size={25}
+				className="fill-gray-500 dark:fill-slate-400 hover:scale-110 dark:hover:scale-90 dark:hover:fill-github hover:fill-github duration-300"
+			/>
+		),
+		path: "https://github.com/Deadflight",
+	},
+	{
+		name: "twitter",
+		icon: (
+			<BsTwitter
+				size={25}
+				className=" fill-gray-500 dark:fill-slate-400 hover:scale-110 dark:hover:fill-twitter hover:fill-twitter duration-300"
+			/>
+		),
+		path: "https://twitter.com/Deadfligth",
+	},
+	{
+		name: "linkedin",
+		icon: (
+			<BsLinkedin
+				size={25}
+				className="fill-gray-500 dark:fill-slate-400 hover:scale-110 dark:hover:fill-linkedin  hover:fill-linkedin duration-300"
+			/>
+		),
+		path: "https://www.linkedin.com/in/carloscorreamillan/",
+	},
+	{
+		name: "facebook",
+		icon: (
+			<BsFacebook
+				size={25}
+				className="fill-gray-500 dark:fill-slate-400 hover:scale-110 dark:hover:fill-facebook hover:fill-facebook duration-300"
+			/>
+		),
+		path: "https://www.facebook.com/carloscorreamillan",
+	},
+];
 
 export const Navbar = () => {
 	return (

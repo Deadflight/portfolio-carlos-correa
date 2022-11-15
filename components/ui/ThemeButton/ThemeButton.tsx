@@ -40,7 +40,7 @@ export const ThemeButton = () => {
 			/>
 			<BsSun
 				size={20}
-				className="fill-gray-500 dark:hover:fill-tertiary duration-300 hidden dark:flex md:dark:fill-primary"
+				className="fill-gray-500 dark:hover:fill-tertiary duration-300 hidden dark:flex dark:fill-yellow-200"
 			/>
 		</button>
 	);
