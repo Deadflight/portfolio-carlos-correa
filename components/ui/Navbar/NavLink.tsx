@@ -16,21 +16,14 @@ export const NavLink: FC<Props> = ({ link }) => {
 	const isActiveLink = pathname === link.to;
 
 	return (
-		<Link
-			href={link.to}
-			className={`${
-				isActiveLink
-					? " first:fill-vivid-sky-blue last:fill-vivid-sky-blue"
-					: ""
-			}  md:flex`}
-		>
+		<Link href={link.to} className={`md:flex`}>
 			{link.icon}
 
 			<span
 				className={`${
 					isActiveLink
-						? "text-vivid-sky-blue"
-						: "text-raisin-black dark:text-yellow-50 md:hover:text-vivid-sky-blue duration-300 md:dark:hover:text-vivid-sky-blue"
+						? "text-tertiary"
+						: "text-secondary dark:text-primary md:hover:text-tertiary duration-300 md:dark:hover:text-tertiary"
 				}  hidden md:flex md:text-md`}
 			>
 				{link.name}

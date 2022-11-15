@@ -15,11 +15,9 @@ module.exports = {
 			// 	sans: ["var(--font-montserrat)", ...fontFamily.sans],
 			// },
 			colors: {
-				cultured: "#f5f5f5ff",
-				"raisin-black": "#24262eff",
-				"lavender-blue": "#c5c3fdff",
-				"sonic-silver": "#7f7876ff",
-				"vivid-sky-blue": "#2ac5f4ff",
+				primary: "#FFFF",
+				secondary: "#24262eff",
+				tertiary: "#2ac5f4ff",
 			},
 			animation: {
 				"spin-slow": "spin 4s linear infinite",

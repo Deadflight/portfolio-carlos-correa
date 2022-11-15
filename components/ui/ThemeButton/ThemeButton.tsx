@@ -34,8 +34,14 @@ export const ThemeButton = () => {
 
 	return (
 		<button className="rounded-full" onClick={handleChangeTheme}>
-			<BsMoon size={20} className="fill-raisin-black flex dark:hidden" />
-			<BsSun size={20} className="fill-yellow-50 hidden dark:flex" />
+			<BsMoon
+				size={20}
+				className="fill-gray-500 hover:fill-tertiary flex dark:hidden duration-300"
+			/>
+			<BsSun
+				size={20}
+				className="fill-gray-500 dark:hover:fill-tertiary duration-300 hidden dark:flex md:dark:fill-primary"
+			/>
 		</button>
 	);
 };
