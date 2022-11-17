@@ -43,7 +43,7 @@ const SOCIAL_ICONS: ISocialIcon[] = [
 		icon: (
 			<BsGithub
 				size={25}
-				className="fill-gray-500 dark:fill-slate-400 hover:scale-110 dark:hover:scale-90 dark:hover:fill-github hover:fill-github duration-300"
+				className="fill-gray-500 dark:fill-slate-400 hover:scale-110 dark:hover:scale-90 dark:hover:fill-white hover:fill-github duration-300"
 			/>
 		),
 		path: "https://github.com/Deadflight",

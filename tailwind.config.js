@@ -12,12 +12,19 @@ module.exports = {
 	theme: {
 		extend: {
 			fontFamily: {
-				sans: ["var(--font-montserrat)", ...fontFamily.sans],
+				sans: [
+					"var(--font-montserrat)",
+					"var(--font-spaceGrotesk)",
+					...fontFamily.sans,
+				],
+				spaceGrotesk: ["var(--font-spaceGrotesk)", ...fontFamily.sans],
 			},
 			colors: {
 				primary: "#FFFF",
-				secondary: "#24262eff",
+				secondary: "#0F162B",
 				tertiary: "#2ac5f4ff",
+				fourth: "#ebedf0",
+				fith: "#bec3c9",
 				twitter: "#1DA1F2",
 				facebook: "#4267B2",
 				linkedin: " #0e76a8",
