@@ -2,7 +2,7 @@ import React from "react";
 import { MainLayout } from "../../layouts";
 
 const ProjectsPage = () => {
-	return <MainLayout>ProjectsPage</MainLayout>;
+	return <MainLayout title="Projects">ProjectsPage</MainLayout>;
 };
 
 export default ProjectsPage;
