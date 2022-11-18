@@ -6,7 +6,7 @@ import Image from "next/image";
 const HomePage = () => {
 	return (
 		<MainLayout title="Home">
-			<section className="bg-fourth h-screen max-h-screen items-center dark:bg-secondary flex flex-col md:flex-row text-center md:items-center md:text-left pb-20 px-5 md:px-10 md:py-14 ">
+			<section className="bg-fourth h-screen max-h-screen items-center dark:bg-secondary flex flex-col md:flex-row text-center md:items-center md:text-left pb-28 px-5 md:px-10 md:py-14 ">
 				<div className="space-y-4 px-6 w-full h-full items-center md:items-start flex flex-col justify-center md:justify-center">
 					<HeroTittle />
 					<CVButton />
