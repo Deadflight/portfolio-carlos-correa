@@ -8,7 +8,7 @@ interface Props {
 
 export const NavLogo: FC<Props> = ({ width, height }) => {
 	return (
-		<Link href={"/"}>
+		<Link href={"/"} className="inline-block">
 			<svg
 				width={width}
 				height={height}
