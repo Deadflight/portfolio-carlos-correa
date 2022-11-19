@@ -2,6 +2,8 @@ import { AppProps } from "next/app";
 import React from "react";
 import "../styles/globals.css";
 import { Montserrat, Space_Grotesk } from "@next/font/google";
+import { ApolloProvider } from "@apollo/client";
+import { apolloClient } from "../lib";
 
 const montserrat = Montserrat({
 	subsets: ["latin"],
@@ -18,9 +20,13 @@ const MyApp = ({
 	pageProps: { session, ...pageProps },
 }: AppProps) => {
 	return (
-		<main className={`${montserrat.variable} ${spaceGrotesk.variable} font-sans`}>
-			<Component {...pageProps} />
-		</main>
+		<ApolloProvider client={apolloClient}>
+			<main
+				className={`${montserrat.variable} ${spaceGrotesk.variable} font-sans`}
+			>
+				<Component {...pageProps} />
+			</main>
+		</ApolloProvider>
 	);
 };
 

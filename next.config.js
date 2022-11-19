@@ -9,7 +9,7 @@ const nextConfig = {
 		// ],
 	},
 	images: {
-		domains: ["camo.githubusercontent.com"],
+		domains: ["localhost"],
 		dangerouslyAllowSVG: true,
 		contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
 	},

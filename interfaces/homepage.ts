@@ -15,6 +15,14 @@ export interface PurpleAttributes {
 	updatedAt: Date;
 	publishedAt: Date;
 	Hero: Hero;
+	IntroduceMe: IIntroduceMe;
+}
+
+export interface IIntroduceMe {
+	id: number;
+	Title: string;
+	IntroduceBodyText: string;
+	Avatar: HeroImage;
 }
 
 export interface Hero {

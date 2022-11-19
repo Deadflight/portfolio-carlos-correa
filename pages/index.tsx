@@ -6,13 +6,16 @@ import { GetStaticProps } from "next";
 import { strapiApi } from "../api";
 import PropsWithChildren from "react";
 import { IHomePage } from "../interfaces";
+import { getStrapiURL } from "../helpers";
 
 interface Props {
 	data: IHomePage;
 }
 
 const HomePage: FC<Props> = ({ data }) => {
-	const { Hero } = data.data.attributes;
+	const { Hero, IntroduceMe } = data.data.attributes;
+
+	console.log(data);
 
 	return (
 		<MainLayout title="Home">
@@ -26,12 +29,12 @@ const HomePage: FC<Props> = ({ data }) => {
 				</div>
 				<div className="max-w-sm max-h-80 md:max-w-full md:max-h-[440px] md:w-full md:h-full flex justify-center ">
 					<Image
-						alt="Hero image"
-						width={500}
-						height={500}
+						alt={Hero.HeroImage.data.attributes.name}
+						width={Hero.HeroImage.data.attributes.width}
+						height={Hero.HeroImage.data.attributes.height}
 						placeholder="blur"
 						blurDataURL="data:..."
-						src="https://camo.githubusercontent.com/29765c4a32f03bd01d44edef1cd674225e3c906b/68747470733a2f2f63646e2e7261776769742e636f6d2f66616365626f6f6b2f6372656174652d72656163742d6170702f323762343261632f73637265656e636173742e737667"
+						src={`${getStrapiURL()}${Hero.HeroImage.data.attributes.url}`}
 					/>
 				</div>
 			</section>
@@ -56,6 +59,9 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
 							HeroImage: "*",
 						},
 					},
+					IntroduceMe: {
+						populate: "*",
+					},
 				},
 			},
 		});
@@ -68,8 +74,9 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
 	} catch (error: any) {
 		console.log(error);
 		return {
-			props: {
-				data: [],
+			redirect: {
+				destination: "/500",
+				permanent: false,
 			},
 		};
 	}
