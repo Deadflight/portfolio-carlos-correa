@@ -50,6 +50,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
 	} catch (error) {
 		console.log(error);
 		return {
+			props: {},
 			redirect: {
 				destination: "/500",
 				permanent: false,
