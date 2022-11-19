@@ -5,3 +5,4 @@ export * from "./Footer";
 export * from "./LanguageButton";
 export * from "./SocialIcons";
 export * from "./ThemeButton";
+export * from "./NextImage";
