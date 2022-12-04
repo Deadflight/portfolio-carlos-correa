@@ -39,7 +39,7 @@ const SOCIAL_ICONS: ISocialIcon[] = [
 export const Footer = () => {
 	return (
 		<>
-			<footer className="w-full relative px-4 py-2 bg-primary dark:bg-secondary shadow-inner">
+			<footer className="w-full relative p-5 bg-primary dark:bg-secondary shadow-inner ">
 				<ContactInformation />
 				<SocialIconsList socialIcons={SOCIAL_ICONS} />
 			</footer>

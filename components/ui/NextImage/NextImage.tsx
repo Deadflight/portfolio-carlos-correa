@@ -1,7 +1,6 @@
 import React, { FC } from "react";
 import Image from "next/image";
 import { UploadFile } from "../../../lib";
-import { getStrapiURL } from "../../../helpers";
 
 interface ImageProps {
 	image: UploadFile;
@@ -11,9 +10,9 @@ export const NextImage: FC<ImageProps> = ({ image }) => {
 	return (
 		<Image
 			alt={name}
-			src={`${getStrapiURL()}${url}`}
-			width={width!}
-			height={height!}
+			src={url}
+			width={width || 500}
+			height={height || 500}
 			placeholder="blur"
 			blurDataURL="data:..."
 		/>

@@ -15,7 +15,7 @@ export const MainLayout: FC<PropsWithChildren<Props>> = ({
 			<Head>
 				<title>{`Carlos Correa - ${title}`}</title>
 			</Head>
-			<div className=" font-sans">
+			<div className="font-sans">
 				<Navbar />
 				{children}
 				<Footer />

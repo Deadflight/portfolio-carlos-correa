@@ -1,5 +1,4 @@
 import React, { FC, useRef } from "react";
-import { getStrapiURL } from "../../helpers";
 import { ComponentHomePageCvButton } from "../../lib";
 
 export const CVButton: FC<ComponentHomePageCvButton> = ({
@@ -12,7 +11,7 @@ export const CVButton: FC<ComponentHomePageCvButton> = ({
 	const onCVDownload = () => {
 		if (!cvRef.current) return;
 
-		const cvURL = `${getStrapiURL()}${url}`;
+		const cvURL = `${process.env.NEXT_PUBLIC_STRAPI_API_URL}${url}`;
 
 		cvRef.current.href = cvURL;
 		cvRef.current.download = `${name}`;

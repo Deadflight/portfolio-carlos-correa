@@ -87,6 +87,29 @@ export type ComponentHomePageIntroduceMeInput = {
   id?: InputMaybe<Scalars['ID']>;
 };
 
+export type ComponentProjectPageProjects = {
+  __typename?: 'ComponentProjectPageProjects';
+  Description: Scalars['String'];
+  Image: UploadFileEntityResponse;
+  Title: Scalars['String'];
+  id: Scalars['ID'];
+};
+
+export type ComponentProjectPageProjectsFiltersInput = {
+  Description?: InputMaybe<StringFilterInput>;
+  Title?: InputMaybe<StringFilterInput>;
+  and?: InputMaybe<Array<InputMaybe<ComponentProjectPageProjectsFiltersInput>>>;
+  not?: InputMaybe<ComponentProjectPageProjectsFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<ComponentProjectPageProjectsFiltersInput>>>;
+};
+
+export type ComponentProjectPageProjectsInput = {
+  Description?: InputMaybe<Scalars['String']>;
+  Image?: InputMaybe<Scalars['ID']>;
+  Title?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['ID']>;
+};
+
 export type DateTimeFilterInput = {
   and?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
   between?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
@@ -141,7 +164,7 @@ export type FloatFilterInput = {
   startsWith?: InputMaybe<Scalars['Float']>;
 };
 
-export type GenericMorph = ComponentHomePageCvButton | ComponentHomePageHero | ComponentHomePageIntroduceMe | HomePage | I18NLocale | Project | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
+export type GenericMorph = ComponentHomePageCvButton | ComponentHomePageHero | ComponentHomePageIntroduceMe | ComponentProjectPageProjects | HomePage | I18NLocale | Project | ProjectPage | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
 
 export type HomePage = {
   __typename?: 'HomePage';
@@ -290,6 +313,7 @@ export type Mutation = {
   createUsersPermissionsUser: UsersPermissionsUserEntityResponse;
   deleteHomePage?: Maybe<HomePageEntityResponse>;
   deleteProject?: Maybe<ProjectEntityResponse>;
+  deleteProjectPage?: Maybe<ProjectPageEntityResponse>;
   deleteUploadFile?: Maybe<UploadFileEntityResponse>;
   deleteUploadFolder?: Maybe<UploadFolderEntityResponse>;
   /** Delete an existing role */
@@ -310,6 +334,7 @@ export type Mutation = {
   updateFileInfo: UploadFileEntityResponse;
   updateHomePage?: Maybe<HomePageEntityResponse>;
   updateProject?: Maybe<ProjectEntityResponse>;
+  updateProjectPage?: Maybe<ProjectPageEntityResponse>;
   updateUploadFile?: Maybe<UploadFileEntityResponse>;
   updateUploadFolder?: Maybe<UploadFolderEntityResponse>;
   /** Update an existing role */
@@ -434,6 +459,11 @@ export type MutationUpdateProjectArgs = {
 };
 
 
+export type MutationUpdateProjectPageArgs = {
+  data: ProjectPageInput;
+};
+
+
 export type MutationUpdateUploadFileArgs = {
   data: UploadFileInput;
   id: Scalars['ID'];
@@ -527,6 +557,37 @@ export type ProjectInput = {
   publishedAt?: InputMaybe<Scalars['DateTime']>;
 };
 
+export type ProjectPage = {
+  __typename?: 'ProjectPage';
+  Projects?: Maybe<Array<Maybe<ComponentProjectPageProjects>>>;
+  createdAt?: Maybe<Scalars['DateTime']>;
+  publishedAt?: Maybe<Scalars['DateTime']>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
+
+export type ProjectPageProjectsArgs = {
+  filters?: InputMaybe<ComponentProjectPageProjectsFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+export type ProjectPageEntity = {
+  __typename?: 'ProjectPageEntity';
+  attributes?: Maybe<ProjectPage>;
+  id?: Maybe<Scalars['ID']>;
+};
+
+export type ProjectPageEntityResponse = {
+  __typename?: 'ProjectPageEntityResponse';
+  data?: Maybe<ProjectPageEntity>;
+};
+
+export type ProjectPageInput = {
+  Projects?: InputMaybe<Array<InputMaybe<ComponentProjectPageProjectsInput>>>;
+  publishedAt?: InputMaybe<Scalars['DateTime']>;
+};
+
 export enum PublicationState {
   Live = 'LIVE',
   Preview = 'PREVIEW'
@@ -539,6 +600,7 @@ export type Query = {
   i18NLocales?: Maybe<I18NLocaleEntityResponseCollection>;
   me?: Maybe<UsersPermissionsMe>;
   project?: Maybe<ProjectEntityResponse>;
+  projectPage?: Maybe<ProjectPageEntityResponse>;
   projects?: Maybe<ProjectEntityResponseCollection>;
   uploadFile?: Maybe<UploadFileEntityResponse>;
   uploadFiles?: Maybe<UploadFileEntityResponseCollection>;
@@ -570,6 +632,11 @@ export type QueryI18NLocalesArgs = {
 
 export type QueryProjectArgs = {
   id?: InputMaybe<Scalars['ID']>;
+};
+
+
+export type QueryProjectPageArgs = {
+  publicationState?: InputMaybe<PublicationState>;
 };
 
 

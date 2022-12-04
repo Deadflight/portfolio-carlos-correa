@@ -1,14 +1,14 @@
 import type { CodegenConfig } from "@graphql-codegen/cli";
-import { getStrapiURL } from "./helpers";
+require("dotenv").config();
 
 const config: CodegenConfig = {
 	generates: {
 		"./lib/apollo/generated/strapiGenerated.ts": {
 			schema: [
 				{
-					[`${getStrapiURL()}/graphql`]: {
+					[`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/graphql`]: {
 						headers: {
-							Authorization: `${process.env.NEXT_PUBLIC_STRAPI_TOKEN}`,
+							Authorization: `bearer ${process.env.NEXT_PUBLIC_STRAPI_TOKEN}`,
 						},
 					},
 				},
