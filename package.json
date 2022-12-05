@@ -2,6 +2,15 @@
 	"name": "portfolio-carlos-correa",
 	"version": "0.1.0",
 	"private": true,
+	"repository": {
+		"url": "https://github.com/Deadflight/portfolio-carlos-correa",
+		"type": "git"
+	},
+	"release": {
+		"branches": [
+			"main"
+		]
+	},
 	"scripts": {
 		"dev": "next dev",
 		"build": "next build",
@@ -48,7 +57,6 @@
 		"@semantic-release/release-notes-generator",
 		"@semantic-release/changelog",
 		"@semantic-release/github",
-		"@semantic-release/npm",
 		"@semantic-release/git"
 	]
 }
