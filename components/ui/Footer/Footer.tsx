@@ -10,6 +10,7 @@ const SOCIAL_ICONS: ISocialIcon[] = [
 		icon: (
 			<BsGithub className="fill-gray-500 w-5 h-5 md:w-6 md:h-6 dark:fill-slate-400 hover:scale-110 dark:hover:scale-90 dark:hover:fill-white hover:fill-github duration-300" />
 		),
+
 		path: "https://github.com/Deadflight",
 	},
 	{
@@ -38,7 +39,7 @@ const SOCIAL_ICONS: ISocialIcon[] = [
 export const Footer = () => {
 	return (
 		<>
-			<footer className="w-full relative px-4 py-2 bg-primary dark:bg-secondary shadow-inner">
+			<footer className="w-full relative p-5 bg-primary dark:bg-secondary shadow-inner ">
 				<ContactInformation />
 				<SocialIconsList socialIcons={SOCIAL_ICONS} />
 			</footer>

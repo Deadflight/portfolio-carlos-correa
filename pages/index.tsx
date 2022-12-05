@@ -1,46 +1,40 @@
 import React, { FC } from "react";
 import { MainLayout } from "../layouts";
-import { CVButton, HeroTittle, Introduce } from "../components";
-import Image from "next/image";
+import { CVButton, HeroTittle, IntroduceText, NextImage } from "../components";
 import { GetStaticProps } from "next";
-import { strapiApi } from "../api";
-import PropsWithChildren from "react";
-import { IHomePage } from "../interfaces";
-import { getStrapiURL } from "../helpers";
+import {
+	apolloClient,
+	GetHomePageDocument,
+	GetHomePageQuery,
+	HomePage,
+} from "../lib";
 
 interface Props {
-	data: IHomePage;
+	homePageData: HomePage;
 }
 
-const HomePage: FC<Props> = ({ data }) => {
-	const { Hero, IntroduceMe } = data.data.attributes;
-
-	console.log(data);
+const HomePage: FC<Props> = ({ homePageData }) => {
+	const { Hero, IntroduceMe } = homePageData;
 
 	return (
 		<MainLayout title="Home">
-			<section className="bg-fourth h-screen space-y-3 md:space-y-0 max-h-screen items-center dark:bg-fith flex flex-col md:flex-row text-center md:items-center md:text-left pb-28 px-5 md:px-10 md:py-14 ">
-				<div className="space-y-4 px-6 w-full h-full items-center md:items-start flex flex-col justify-center md:justify-center">
+			<section className="bg-fourth py-7 space-y-3 md:space-y-0 max-h-screen items-center dark:bg-fith flex flex-col md:flex-row text-center md:items-center md:text-left pb-28 px-5 md:px-10 md:py-14 ">
+				<article className="space-y-4 w-full h-full items-center md:items-start flex flex-col justify-center md:justify-center">
 					<HeroTittle title={Hero.Title} subtitle={Hero.Subtitle} />
-					<CVButton
-						label={Hero.CVButton.ButtonText}
-						curriculum={Hero.CVButton.Curriculum.data}
-					/>
-				</div>
-				<div className="max-w-sm max-h-80 md:max-w-full md:max-h-[440px] md:w-full md:h-full flex justify-center ">
-					<Image
-						alt={Hero.HeroImage.data.attributes.name}
-						width={Hero.HeroImage.data.attributes.width}
-						height={Hero.HeroImage.data.attributes.height}
-						placeholder="blur"
-						blurDataURL="data:..."
-						src={`${getStrapiURL()}${Hero.HeroImage.data.attributes.url}`}
-					/>
-				</div>
+					<CVButton {...Hero.CVButton} />
+				</article>
+				<article className="px-6 h-auto w-auto max-w-sm max-h-80 md:max-w-full md:max-h-[440px] md:w-full md:h-full flex justify-center ">
+					<NextImage image={Hero.HeroImage.data?.attributes!} />
+				</article>
 			</section>
-			<section className="bg-primary h-screen px-5 py-8 dark:bg-secondary dark:text-primary">
-				<Introduce />
-				<div></div>
+			<section className="bg-primary px-5 py-10 dark:bg-secondary dark:text-primary md:px-10 md:py-14 flex flex-col justify-center items-center space-y-4 md:flex-row md:space-y-0">
+				<IntroduceText
+					title={IntroduceMe.Title}
+					bodyText={IntroduceMe.IntroduceBodyText}
+				/>
+				<article className="px-6 max-w-sm h-auto w-auto max-h-80 md:max-w-full md:max-h-[440px] md:w-auto md:h-auto flex justify-center">
+					<NextImage image={IntroduceMe.Avatar.data?.attributes!} />
+				</article>
 			</section>
 		</MainLayout>
 	);
@@ -48,36 +42,24 @@ const HomePage: FC<Props> = ({ data }) => {
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
 	try {
-		const { data } = await strapiApi.get("/api/home-page", {
-			params: {
-				populate: {
-					Hero: {
-						populate: {
-							CVButton: {
-								populate: "*",
-							},
-							HeroImage: "*",
-						},
-					},
-					IntroduceMe: {
-						populate: "*",
-					},
-				},
-			},
+		const { data } = await apolloClient.query<GetHomePageQuery>({
+			query: GetHomePageDocument,
 		});
+
+		if (!data.homePage?.data)
+			return {
+				notFound: true,
+			};
 
 		return {
 			props: {
-				data,
+				homePageData: data.homePage?.data?.attributes,
 			},
 		};
-	} catch (error: any) {
+	} catch (error) {
 		console.log(error);
 		return {
-			redirect: {
-				destination: "/500",
-				permanent: false,
-			},
+			notFound: true,
 		};
 	}
 };

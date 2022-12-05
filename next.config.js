@@ -9,7 +9,11 @@ const nextConfig = {
 		// ],
 	},
 	images: {
-		domains: ["localhost"],
+		domains: [
+			"localhost",
+			"portfolio-carlos-correa.up.railway.apphttps",
+			"res.cloudinary.com",
+		],
 		dangerouslyAllowSVG: true,
 		contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
 	},
