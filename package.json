@@ -2,14 +2,14 @@
 	"name": "portfolio-carlos-correa",
 	"version": "0.1.0",
 	"private": true,
-	"repository": {
-		"url": "https://github.com/Deadflight/portfolio-carlos-correa",
-		"type": "git"
-	},
 	"release": {
 		"branches": [
 			"main"
 		]
+	},
+	"repository": {
+		"url": "https://github.com/Deadflight/portfolio-carlos-correa",
+		"type": "git"
 	},
 	"scripts": {
 		"dev": "next dev",
