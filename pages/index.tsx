@@ -1,12 +1,6 @@
 import React, { FC } from "react";
 import { MainLayout } from "../layouts";
-import {
-	AvatarImage,
-	CVButton,
-	HeroTittle,
-	IntroduceText,
-	NextImage,
-} from "../components";
+import { CVButton, HeroTittle, IntroduceText, NextImage } from "../components";
 import { GetStaticProps } from "next";
 import {
 	apolloClient,
@@ -20,6 +14,7 @@ interface Props {
 }
 
 const HomePage: FC<Props> = ({ homePageData }) => {
+	if (!homePageData) return <h1>Error</h1>;
 	const { Hero, IntroduceMe } = homePageData;
 
 	return (
@@ -29,18 +24,18 @@ const HomePage: FC<Props> = ({ homePageData }) => {
 					<HeroTittle title={Hero.Title} subtitle={Hero.Subtitle} />
 					<CVButton {...Hero.CVButton} />
 				</article>
-				<article className="px-6 max-w-sm max-h-80 md:max-w-full md:max-h-[440px] md:w-full md:h-full flex justify-center ">
+				<article className="px-6 h-auto w-auto max-w-sm max-h-80 md:max-w-full md:max-h-[440px] md:w-full md:h-full flex justify-center ">
 					<NextImage image={Hero.HeroImage.data?.attributes!} />
 				</article>
 			</section>
-			<section className="bg-primary px-5 py-10 dark:bg-secondary dark:text-primary md:px-10 md:py-14 flex flex-col items-center space-y-4 md:flex-row md:space-y-0">
+			<section className="bg-primary px-5 py-10 dark:bg-secondary dark:text-primary md:px-10 md:py-14 flex flex-col justify-center items-center space-y-4 md:flex-row md:space-y-0">
 				<IntroduceText
 					title={IntroduceMe.Title}
 					bodyText={IntroduceMe.IntroduceBodyText}
 				/>
-				<div className="px-6 max-w-sm max-h-80 md:max-w-full md:max-h-[440px] md:w-full md:h-full flex justify-center">
+				<article className="px-6 max-w-sm h-auto w-auto max-h-80 md:max-w-full md:max-h-[440px] md:w-auto md:h-auto flex justify-center">
 					<NextImage image={IntroduceMe.Avatar.data?.attributes!} />
-				</div>
+				</article>
 			</section>
 		</MainLayout>
 	);
@@ -52,6 +47,11 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
 			query: GetHomePageDocument,
 		});
 
+		if (!data.homePage?.data)
+			return {
+				props: {},
+			};
+
 		return {
 			props: {
 				homePageData: data.homePage?.data?.attributes,
@@ -61,10 +61,6 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
 		console.log(error);
 		return {
 			props: {},
-			redirect: {
-				destination: "/500",
-				permanent: false,
-			},
 		};
 	}
 };
