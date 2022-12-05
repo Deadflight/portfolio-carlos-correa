@@ -1,12 +1,13 @@
-function Error({ statusCode }: any) {
+import { MainLayout } from "../layouts";
+const Error = ({ statusCode }: any) => {
 	return (
-		<p>
+		<MainLayout title="Carlos Correa - 404 Page">
 			{statusCode
 				? `An error ${statusCode} occurred on server`
 				: "An error occurred on client"}
-		</p>
+		</MainLayout>
 	);
-}
+};
 
 Error.getInitialProps = ({ res, err }: any) => {
 	const statusCode = res ? res.statusCode : err ? err.statusCode : 404;
