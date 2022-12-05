@@ -14,7 +14,6 @@ interface Props {
 }
 
 const HomePage: FC<Props> = ({ homePageData }) => {
-	if (!homePageData) return <h1>Error</h1>;
 	const { Hero, IntroduceMe } = homePageData;
 
 	return (
@@ -49,7 +48,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
 
 		if (!data.homePage?.data)
 			return {
-				props: {},
+				notFound: true,
 			};
 
 		return {
@@ -60,7 +59,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
 	} catch (error) {
 		console.log(error);
 		return {
-			props: {},
+			notFound: true,
 		};
 	}
 };
