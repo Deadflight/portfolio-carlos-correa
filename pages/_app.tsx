@@ -22,7 +22,7 @@ const MyApp = ({
 	return (
 		<ApolloProvider client={apolloClient}>
 			<main
-				className={`${montserrat.variable} ${spaceGrotesk.variable} font-sans`}
+				className={`${montserrat.variable} ${spaceGrotesk.variable} font-sans h-screen`}
 			>
 				<Component {...pageProps} />
 			</main>

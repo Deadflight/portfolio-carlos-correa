@@ -6,3 +6,4 @@ export * from "./LanguageButton";
 export * from "./SocialIcons";
 export * from "./ThemeButton";
 export * from "./NextImage";
+export * from "./ProjectsSidebar";

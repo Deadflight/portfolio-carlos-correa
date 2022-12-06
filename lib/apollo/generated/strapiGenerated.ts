@@ -1404,6 +1404,11 @@ export type GetHomePageQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type GetHomePageQuery = { __typename?: 'Query', homePage?: { __typename?: 'HomePageEntityResponse', data?: { __typename?: 'HomePageEntity', attributes?: { __typename?: 'HomePage', Hero: { __typename?: 'ComponentHomePageHero', Title: string, Subtitle: string, HeroImage: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', name: string, height?: number | null, width?: number | null, url: string } | null } | null }, CVButton: { __typename?: 'ComponentHomePageCvButton', ButtonText: string, Curriculum: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', name: string, url: string } | null } | null } } }, IntroduceMe: { __typename?: 'ComponentHomePageIntroduceMe', Title: string, IntroduceBodyText: string, Avatar: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', name: string, height?: number | null, width?: number | null, url: string } | null } | null } } } | null } | null } | null };
 
+export type GetProductsPageQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetProductsPageQuery = { __typename?: 'Query', projectsPage?: { __typename?: 'ProjectsPageEntityResponse', data?: { __typename?: 'ProjectsPageEntity', attributes?: { __typename?: 'ProjectsPage', Sidebar: { __typename?: 'ComponentProjectsPageSidebar', languages?: { __typename?: 'LanguageRelationResponseCollection', data: Array<{ __typename?: 'LanguageEntity', attributes?: { __typename?: 'Language', Name: string, Logo: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', width?: number | null, url: string, height?: number | null, name: string } | null } | null } } | null }> } | null, frameworks?: { __typename?: 'FrameworkRelationResponseCollection', data: Array<{ __typename?: 'FrameworkEntity', attributes?: { __typename?: 'Framework', Name: string, Logo: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', width?: number | null, url: string, height?: number | null, name: string } | null } | null } } | null }> } | null }, projects?: { __typename?: 'ProjectRelationResponseCollection', data: Array<{ __typename?: 'ProjectEntity', attributes?: { __typename?: 'Project', Title: string, Slug: string, Description: string, Image: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', name: string, height?: number | null, width?: number | null, url: string } | null } | null }, languages?: { __typename?: 'LanguageRelationResponseCollection', data: Array<{ __typename?: 'LanguageEntity', attributes?: { __typename?: 'Language', Name: string, Logo: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', width?: number | null, url: string, height?: number | null, name: string } | null } | null } } | null }> } | null, frameworks?: { __typename?: 'FrameworkRelationResponseCollection', data: Array<{ __typename?: 'FrameworkEntity', attributes?: { __typename?: 'Framework', Name: string, Logo: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', width?: number | null, url: string, height?: number | null, name: string } | null } | null } } | null }> } | null } | null }> } | null } | null } | null } | null };
+
 
 export const GetHomePageDocument = gql`
     query GetHomePage {
@@ -1481,3 +1486,129 @@ export function useGetHomePageLazyQuery(baseOptions?: Apollo.LazyQueryHookOption
 export type GetHomePageQueryHookResult = ReturnType<typeof useGetHomePageQuery>;
 export type GetHomePageLazyQueryHookResult = ReturnType<typeof useGetHomePageLazyQuery>;
 export type GetHomePageQueryResult = Apollo.QueryResult<GetHomePageQuery, GetHomePageQueryVariables>;
+export const GetProductsPageDocument = gql`
+    query GetProductsPage {
+  projectsPage {
+    data {
+      attributes {
+        Sidebar {
+          languages {
+            data {
+              attributes {
+                Name
+                Logo {
+                  data {
+                    attributes {
+                      width
+                      url
+                      height
+                      name
+                    }
+                  }
+                }
+              }
+            }
+          }
+          frameworks {
+            data {
+              attributes {
+                Name
+                Logo {
+                  data {
+                    attributes {
+                      width
+                      url
+                      height
+                      name
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        projects {
+          data {
+            attributes {
+              Title
+              Slug
+              Description
+              Image {
+                data {
+                  attributes {
+                    name
+                    height
+                    width
+                    url
+                  }
+                }
+              }
+              languages {
+                data {
+                  attributes {
+                    Name
+                    Logo {
+                      data {
+                        attributes {
+                          width
+                          url
+                          height
+                          name
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+              frameworks {
+                data {
+                  attributes {
+                    Name
+                    Logo {
+                      data {
+                        attributes {
+                          width
+                          url
+                          height
+                          name
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetProductsPageQuery__
+ *
+ * To run a query within a React component, call `useGetProductsPageQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetProductsPageQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetProductsPageQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetProductsPageQuery(baseOptions?: Apollo.QueryHookOptions<GetProductsPageQuery, GetProductsPageQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetProductsPageQuery, GetProductsPageQueryVariables>(GetProductsPageDocument, options);
+      }
+export function useGetProductsPageLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetProductsPageQuery, GetProductsPageQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetProductsPageQuery, GetProductsPageQueryVariables>(GetProductsPageDocument, options);
+        }
+export type GetProductsPageQueryHookResult = ReturnType<typeof useGetProductsPageQuery>;
+export type GetProductsPageLazyQueryHookResult = ReturnType<typeof useGetProductsPageLazyQuery>;
+export type GetProductsPageQueryResult = Apollo.QueryResult<GetProductsPageQuery, GetProductsPageQueryVariables>;
