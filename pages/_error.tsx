@@ -1,17 +1,14 @@
-import { MainLayout } from "../layouts";
-const Error = ({ statusCode }: any) => {
-	return (
-		<MainLayout title="Carlos Correa - 404 Page">
-			{statusCode
-				? `An error ${statusCode} occurred on server`
-				: "An error occurred on client"}
-		</MainLayout>
-	);
+import React from "react";
+import NotFoundPage from "./404";
+import ServerErrorPage from "./500";
+
+interface Props {
+	statusCode: number;
+}
+
+const ErrorPage = ({ statusCode }: Props) => {
+	console.log(statusCode);
+	return statusCode >= 500 ? <ServerErrorPage /> : <NotFoundPage />;
 };
 
-Error.getInitialProps = ({ res, err }: any) => {
-	const statusCode = res ? res.statusCode : err ? err.statusCode : 404;
-	return { statusCode };
-};
-
-export default Error;
+export default ErrorPage;

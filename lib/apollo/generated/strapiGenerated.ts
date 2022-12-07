@@ -89,31 +89,41 @@ export type ComponentHomePageIntroduceMeInput = {
 
 export type ComponentProjectsPageSidebar = {
   __typename?: 'ComponentProjectsPageSidebar';
-  frameworks?: Maybe<FrameworkRelationResponseCollection>;
+  frameworks_libraries?: Maybe<FrameworkLibrarieRelationResponseCollection>;
   id: Scalars['ID'];
-  languages?: Maybe<LanguageRelationResponseCollection>;
+  styles?: Maybe<StyleRelationResponseCollection>;
+  tools?: Maybe<ToolRelationResponseCollection>;
 };
 
 
-export type ComponentProjectsPageSidebarFrameworksArgs = {
-  filters?: InputMaybe<FrameworkFiltersInput>;
+export type ComponentProjectsPageSidebarFrameworks_LibrariesArgs = {
+  filters?: InputMaybe<FrameworkLibrarieFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   publicationState?: InputMaybe<PublicationState>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
 
-export type ComponentProjectsPageSidebarLanguagesArgs = {
-  filters?: InputMaybe<LanguageFiltersInput>;
+export type ComponentProjectsPageSidebarStylesArgs = {
+  filters?: InputMaybe<StyleFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  publicationState?: InputMaybe<PublicationState>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+export type ComponentProjectsPageSidebarToolsArgs = {
+  filters?: InputMaybe<ToolFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   publicationState?: InputMaybe<PublicationState>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
 export type ComponentProjectsPageSidebarInput = {
-  frameworks?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  frameworks_libraries?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
   id?: InputMaybe<Scalars['ID']>;
-  languages?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  styles?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  tools?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
 };
 
 export type DateTimeFilterInput = {
@@ -170,8 +180,8 @@ export type FloatFilterInput = {
   startsWith?: InputMaybe<Scalars['Float']>;
 };
 
-export type Framework = {
-  __typename?: 'Framework';
+export type FrameworkLibrarie = {
+  __typename?: 'FrameworkLibrarie';
   Logo: UploadFileEntityResponse;
   Name: Scalars['String'];
   createdAt?: Maybe<Scalars['DateTime']>;
@@ -181,55 +191,55 @@ export type Framework = {
 };
 
 
-export type FrameworkProjectsArgs = {
+export type FrameworkLibrarieProjectsArgs = {
   filters?: InputMaybe<ProjectFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   publicationState?: InputMaybe<PublicationState>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
-export type FrameworkEntity = {
-  __typename?: 'FrameworkEntity';
-  attributes?: Maybe<Framework>;
+export type FrameworkLibrarieEntity = {
+  __typename?: 'FrameworkLibrarieEntity';
+  attributes?: Maybe<FrameworkLibrarie>;
   id?: Maybe<Scalars['ID']>;
 };
 
-export type FrameworkEntityResponse = {
-  __typename?: 'FrameworkEntityResponse';
-  data?: Maybe<FrameworkEntity>;
+export type FrameworkLibrarieEntityResponse = {
+  __typename?: 'FrameworkLibrarieEntityResponse';
+  data?: Maybe<FrameworkLibrarieEntity>;
 };
 
-export type FrameworkEntityResponseCollection = {
-  __typename?: 'FrameworkEntityResponseCollection';
-  data: Array<FrameworkEntity>;
+export type FrameworkLibrarieEntityResponseCollection = {
+  __typename?: 'FrameworkLibrarieEntityResponseCollection';
+  data: Array<FrameworkLibrarieEntity>;
   meta: ResponseCollectionMeta;
 };
 
-export type FrameworkFiltersInput = {
+export type FrameworkLibrarieFiltersInput = {
   Name?: InputMaybe<StringFilterInput>;
-  and?: InputMaybe<Array<InputMaybe<FrameworkFiltersInput>>>;
+  and?: InputMaybe<Array<InputMaybe<FrameworkLibrarieFiltersInput>>>;
   createdAt?: InputMaybe<DateTimeFilterInput>;
   id?: InputMaybe<IdFilterInput>;
-  not?: InputMaybe<FrameworkFiltersInput>;
-  or?: InputMaybe<Array<InputMaybe<FrameworkFiltersInput>>>;
+  not?: InputMaybe<FrameworkLibrarieFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<FrameworkLibrarieFiltersInput>>>;
   projects?: InputMaybe<ProjectFiltersInput>;
   publishedAt?: InputMaybe<DateTimeFilterInput>;
   updatedAt?: InputMaybe<DateTimeFilterInput>;
 };
 
-export type FrameworkInput = {
+export type FrameworkLibrarieInput = {
   Logo?: InputMaybe<Scalars['ID']>;
   Name?: InputMaybe<Scalars['String']>;
   projects?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
   publishedAt?: InputMaybe<Scalars['DateTime']>;
 };
 
-export type FrameworkRelationResponseCollection = {
-  __typename?: 'FrameworkRelationResponseCollection';
-  data: Array<FrameworkEntity>;
+export type FrameworkLibrarieRelationResponseCollection = {
+  __typename?: 'FrameworkLibrarieRelationResponseCollection';
+  data: Array<FrameworkLibrarieEntity>;
 };
 
-export type GenericMorph = ComponentHomePageCvButton | ComponentHomePageHero | ComponentHomePageIntroduceMe | ComponentProjectsPageSidebar | Framework | HomePage | I18NLocale | Language | Project | ProjectsPage | Style | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
+export type GenericMorph = ComponentHomePageCvButton | ComponentHomePageHero | ComponentHomePageIntroduceMe | ComponentProjectsPageSidebar | FrameworkLibrarie | HomePage | I18NLocale | Project | ProjectsPage | Style | Tool | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
 
 export type HomePage = {
   __typename?: 'HomePage';
@@ -365,85 +375,26 @@ export type JsonFilterInput = {
   startsWith?: InputMaybe<Scalars['JSON']>;
 };
 
-export type Language = {
-  __typename?: 'Language';
-  Logo: UploadFileEntityResponse;
-  Name: Scalars['String'];
-  createdAt?: Maybe<Scalars['DateTime']>;
-  projects?: Maybe<ProjectRelationResponseCollection>;
-  publishedAt?: Maybe<Scalars['DateTime']>;
-  updatedAt?: Maybe<Scalars['DateTime']>;
-};
-
-
-export type LanguageProjectsArgs = {
-  filters?: InputMaybe<ProjectFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
-  publicationState?: InputMaybe<PublicationState>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-
-export type LanguageEntity = {
-  __typename?: 'LanguageEntity';
-  attributes?: Maybe<Language>;
-  id?: Maybe<Scalars['ID']>;
-};
-
-export type LanguageEntityResponse = {
-  __typename?: 'LanguageEntityResponse';
-  data?: Maybe<LanguageEntity>;
-};
-
-export type LanguageEntityResponseCollection = {
-  __typename?: 'LanguageEntityResponseCollection';
-  data: Array<LanguageEntity>;
-  meta: ResponseCollectionMeta;
-};
-
-export type LanguageFiltersInput = {
-  Name?: InputMaybe<StringFilterInput>;
-  and?: InputMaybe<Array<InputMaybe<LanguageFiltersInput>>>;
-  createdAt?: InputMaybe<DateTimeFilterInput>;
-  id?: InputMaybe<IdFilterInput>;
-  not?: InputMaybe<LanguageFiltersInput>;
-  or?: InputMaybe<Array<InputMaybe<LanguageFiltersInput>>>;
-  projects?: InputMaybe<ProjectFiltersInput>;
-  publishedAt?: InputMaybe<DateTimeFilterInput>;
-  updatedAt?: InputMaybe<DateTimeFilterInput>;
-};
-
-export type LanguageInput = {
-  Logo?: InputMaybe<Scalars['ID']>;
-  Name?: InputMaybe<Scalars['String']>;
-  projects?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  publishedAt?: InputMaybe<Scalars['DateTime']>;
-};
-
-export type LanguageRelationResponseCollection = {
-  __typename?: 'LanguageRelationResponseCollection';
-  data: Array<LanguageEntity>;
-};
-
 export type Mutation = {
   __typename?: 'Mutation';
   /** Change user password. Confirm with the current password. */
   changePassword?: Maybe<UsersPermissionsLoginPayload>;
-  createFramework?: Maybe<FrameworkEntityResponse>;
-  createLanguage?: Maybe<LanguageEntityResponse>;
+  createFrameworkLibrarie?: Maybe<FrameworkLibrarieEntityResponse>;
   createProject?: Maybe<ProjectEntityResponse>;
   createStyle?: Maybe<StyleEntityResponse>;
+  createTool?: Maybe<ToolEntityResponse>;
   createUploadFile?: Maybe<UploadFileEntityResponse>;
   createUploadFolder?: Maybe<UploadFolderEntityResponse>;
   /** Create a new role */
   createUsersPermissionsRole?: Maybe<UsersPermissionsCreateRolePayload>;
   /** Create a new user */
   createUsersPermissionsUser: UsersPermissionsUserEntityResponse;
-  deleteFramework?: Maybe<FrameworkEntityResponse>;
+  deleteFrameworkLibrarie?: Maybe<FrameworkLibrarieEntityResponse>;
   deleteHomePage?: Maybe<HomePageEntityResponse>;
-  deleteLanguage?: Maybe<LanguageEntityResponse>;
   deleteProject?: Maybe<ProjectEntityResponse>;
   deleteProjectsPage?: Maybe<ProjectsPageEntityResponse>;
   deleteStyle?: Maybe<StyleEntityResponse>;
+  deleteTool?: Maybe<ToolEntityResponse>;
   deleteUploadFile?: Maybe<UploadFileEntityResponse>;
   deleteUploadFolder?: Maybe<UploadFolderEntityResponse>;
   /** Delete an existing role */
@@ -462,12 +413,12 @@ export type Mutation = {
   /** Reset user password. Confirm with a code (resetToken from forgotPassword) */
   resetPassword?: Maybe<UsersPermissionsLoginPayload>;
   updateFileInfo: UploadFileEntityResponse;
-  updateFramework?: Maybe<FrameworkEntityResponse>;
+  updateFrameworkLibrarie?: Maybe<FrameworkLibrarieEntityResponse>;
   updateHomePage?: Maybe<HomePageEntityResponse>;
-  updateLanguage?: Maybe<LanguageEntityResponse>;
   updateProject?: Maybe<ProjectEntityResponse>;
   updateProjectsPage?: Maybe<ProjectsPageEntityResponse>;
   updateStyle?: Maybe<StyleEntityResponse>;
+  updateTool?: Maybe<ToolEntityResponse>;
   updateUploadFile?: Maybe<UploadFileEntityResponse>;
   updateUploadFolder?: Maybe<UploadFolderEntityResponse>;
   /** Update an existing role */
@@ -485,13 +436,8 @@ export type MutationChangePasswordArgs = {
 };
 
 
-export type MutationCreateFrameworkArgs = {
-  data: FrameworkInput;
-};
-
-
-export type MutationCreateLanguageArgs = {
-  data: LanguageInput;
+export type MutationCreateFrameworkLibrarieArgs = {
+  data: FrameworkLibrarieInput;
 };
 
 
@@ -502,6 +448,11 @@ export type MutationCreateProjectArgs = {
 
 export type MutationCreateStyleArgs = {
   data: StyleInput;
+};
+
+
+export type MutationCreateToolArgs = {
+  data: ToolInput;
 };
 
 
@@ -525,12 +476,7 @@ export type MutationCreateUsersPermissionsUserArgs = {
 };
 
 
-export type MutationDeleteFrameworkArgs = {
-  id: Scalars['ID'];
-};
-
-
-export type MutationDeleteLanguageArgs = {
+export type MutationDeleteFrameworkLibrarieArgs = {
   id: Scalars['ID'];
 };
 
@@ -541,6 +487,11 @@ export type MutationDeleteProjectArgs = {
 
 
 export type MutationDeleteStyleArgs = {
+  id: Scalars['ID'];
+};
+
+
+export type MutationDeleteToolArgs = {
   id: Scalars['ID'];
 };
 
@@ -611,20 +562,14 @@ export type MutationUpdateFileInfoArgs = {
 };
 
 
-export type MutationUpdateFrameworkArgs = {
-  data: FrameworkInput;
+export type MutationUpdateFrameworkLibrarieArgs = {
+  data: FrameworkLibrarieInput;
   id: Scalars['ID'];
 };
 
 
 export type MutationUpdateHomePageArgs = {
   data: HomePageInput;
-};
-
-
-export type MutationUpdateLanguageArgs = {
-  data: LanguageInput;
-  id: Scalars['ID'];
 };
 
 
@@ -641,6 +586,12 @@ export type MutationUpdateProjectsPageArgs = {
 
 export type MutationUpdateStyleArgs = {
   data: StyleInput;
+  id: Scalars['ID'];
+};
+
+
+export type MutationUpdateToolArgs = {
+  data: ToolInput;
   id: Scalars['ID'];
 };
 
@@ -696,26 +647,37 @@ export type Project = {
   __typename?: 'Project';
   Description: Scalars['String'];
   Image: UploadFileEntityResponse;
+  Repository: Scalars['String'];
   Slug: Scalars['String'];
   Title: Scalars['String'];
+  Website: Scalars['String'];
   createdAt?: Maybe<Scalars['DateTime']>;
-  frameworks?: Maybe<FrameworkRelationResponseCollection>;
-  languages?: Maybe<LanguageRelationResponseCollection>;
+  frameworks_libraries?: Maybe<FrameworkLibrarieRelationResponseCollection>;
   publishedAt?: Maybe<Scalars['DateTime']>;
+  styles?: Maybe<StyleRelationResponseCollection>;
+  tools?: Maybe<ToolRelationResponseCollection>;
   updatedAt?: Maybe<Scalars['DateTime']>;
 };
 
 
-export type ProjectFrameworksArgs = {
-  filters?: InputMaybe<FrameworkFiltersInput>;
+export type ProjectFrameworks_LibrariesArgs = {
+  filters?: InputMaybe<FrameworkLibrarieFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   publicationState?: InputMaybe<PublicationState>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
 
-export type ProjectLanguagesArgs = {
-  filters?: InputMaybe<LanguageFiltersInput>;
+export type ProjectStylesArgs = {
+  filters?: InputMaybe<StyleFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  publicationState?: InputMaybe<PublicationState>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+export type ProjectToolsArgs = {
+  filters?: InputMaybe<ToolFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   publicationState?: InputMaybe<PublicationState>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
@@ -740,27 +702,33 @@ export type ProjectEntityResponseCollection = {
 
 export type ProjectFiltersInput = {
   Description?: InputMaybe<StringFilterInput>;
+  Repository?: InputMaybe<StringFilterInput>;
   Slug?: InputMaybe<StringFilterInput>;
   Title?: InputMaybe<StringFilterInput>;
+  Website?: InputMaybe<StringFilterInput>;
   and?: InputMaybe<Array<InputMaybe<ProjectFiltersInput>>>;
   createdAt?: InputMaybe<DateTimeFilterInput>;
-  frameworks?: InputMaybe<FrameworkFiltersInput>;
+  frameworks_libraries?: InputMaybe<FrameworkLibrarieFiltersInput>;
   id?: InputMaybe<IdFilterInput>;
-  languages?: InputMaybe<LanguageFiltersInput>;
   not?: InputMaybe<ProjectFiltersInput>;
   or?: InputMaybe<Array<InputMaybe<ProjectFiltersInput>>>;
   publishedAt?: InputMaybe<DateTimeFilterInput>;
+  styles?: InputMaybe<StyleFiltersInput>;
+  tools?: InputMaybe<ToolFiltersInput>;
   updatedAt?: InputMaybe<DateTimeFilterInput>;
 };
 
 export type ProjectInput = {
   Description?: InputMaybe<Scalars['String']>;
   Image?: InputMaybe<Scalars['ID']>;
+  Repository?: InputMaybe<Scalars['String']>;
   Slug?: InputMaybe<Scalars['String']>;
   Title?: InputMaybe<Scalars['String']>;
-  frameworks?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  languages?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  Website?: InputMaybe<Scalars['String']>;
+  frameworks_libraries?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
   publishedAt?: InputMaybe<Scalars['DateTime']>;
+  styles?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  tools?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
 };
 
 export type ProjectRelationResponseCollection = {
@@ -809,19 +777,19 @@ export enum PublicationState {
 
 export type Query = {
   __typename?: 'Query';
-  framework?: Maybe<FrameworkEntityResponse>;
-  frameworks?: Maybe<FrameworkEntityResponseCollection>;
+  frameworkLibrarie?: Maybe<FrameworkLibrarieEntityResponse>;
+  frameworksLibraries?: Maybe<FrameworkLibrarieEntityResponseCollection>;
   homePage?: Maybe<HomePageEntityResponse>;
   i18NLocale?: Maybe<I18NLocaleEntityResponse>;
   i18NLocales?: Maybe<I18NLocaleEntityResponseCollection>;
-  language?: Maybe<LanguageEntityResponse>;
-  languages?: Maybe<LanguageEntityResponseCollection>;
   me?: Maybe<UsersPermissionsMe>;
   project?: Maybe<ProjectEntityResponse>;
   projects?: Maybe<ProjectEntityResponseCollection>;
   projectsPage?: Maybe<ProjectsPageEntityResponse>;
   style?: Maybe<StyleEntityResponse>;
   styles?: Maybe<StyleEntityResponseCollection>;
+  tool?: Maybe<ToolEntityResponse>;
+  tools?: Maybe<ToolEntityResponseCollection>;
   uploadFile?: Maybe<UploadFileEntityResponse>;
   uploadFiles?: Maybe<UploadFileEntityResponseCollection>;
   uploadFolder?: Maybe<UploadFolderEntityResponse>;
@@ -833,13 +801,13 @@ export type Query = {
 };
 
 
-export type QueryFrameworkArgs = {
+export type QueryFrameworkLibrarieArgs = {
   id?: InputMaybe<Scalars['ID']>;
 };
 
 
-export type QueryFrameworksArgs = {
-  filters?: InputMaybe<FrameworkFiltersInput>;
+export type QueryFrameworksLibrariesArgs = {
+  filters?: InputMaybe<FrameworkLibrarieFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   publicationState?: InputMaybe<PublicationState>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
@@ -859,19 +827,6 @@ export type QueryI18NLocaleArgs = {
 export type QueryI18NLocalesArgs = {
   filters?: InputMaybe<I18NLocaleFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-
-
-export type QueryLanguageArgs = {
-  id?: InputMaybe<Scalars['ID']>;
-};
-
-
-export type QueryLanguagesArgs = {
-  filters?: InputMaybe<LanguageFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
-  publicationState?: InputMaybe<PublicationState>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
@@ -901,6 +856,19 @@ export type QueryStyleArgs = {
 
 export type QueryStylesArgs = {
   filters?: InputMaybe<StyleFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  publicationState?: InputMaybe<PublicationState>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+export type QueryToolArgs = {
+  id?: InputMaybe<Scalars['ID']>;
+};
+
+
+export type QueryToolsArgs = {
+  filters?: InputMaybe<ToolFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   publicationState?: InputMaybe<PublicationState>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
@@ -988,8 +956,17 @@ export type Style = {
   Logo: UploadFileEntityResponse;
   Name: Scalars['String'];
   createdAt?: Maybe<Scalars['DateTime']>;
+  projects?: Maybe<ProjectRelationResponseCollection>;
   publishedAt?: Maybe<Scalars['DateTime']>;
   updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
+
+export type StyleProjectsArgs = {
+  filters?: InputMaybe<ProjectFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  publicationState?: InputMaybe<PublicationState>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
 export type StyleEntity = {
@@ -1016,6 +993,7 @@ export type StyleFiltersInput = {
   id?: InputMaybe<IdFilterInput>;
   not?: InputMaybe<StyleFiltersInput>;
   or?: InputMaybe<Array<InputMaybe<StyleFiltersInput>>>;
+  projects?: InputMaybe<ProjectFiltersInput>;
   publishedAt?: InputMaybe<DateTimeFilterInput>;
   updatedAt?: InputMaybe<DateTimeFilterInput>;
 };
@@ -1023,7 +1001,72 @@ export type StyleFiltersInput = {
 export type StyleInput = {
   Logo?: InputMaybe<Scalars['ID']>;
   Name?: InputMaybe<Scalars['String']>;
+  projects?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
   publishedAt?: InputMaybe<Scalars['DateTime']>;
+};
+
+export type StyleRelationResponseCollection = {
+  __typename?: 'StyleRelationResponseCollection';
+  data: Array<StyleEntity>;
+};
+
+export type Tool = {
+  __typename?: 'Tool';
+  Logo: UploadFileEntityResponse;
+  Name: Scalars['String'];
+  createdAt?: Maybe<Scalars['DateTime']>;
+  projects?: Maybe<ProjectRelationResponseCollection>;
+  publishedAt?: Maybe<Scalars['DateTime']>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
+
+export type ToolProjectsArgs = {
+  filters?: InputMaybe<ProjectFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  publicationState?: InputMaybe<PublicationState>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+export type ToolEntity = {
+  __typename?: 'ToolEntity';
+  attributes?: Maybe<Tool>;
+  id?: Maybe<Scalars['ID']>;
+};
+
+export type ToolEntityResponse = {
+  __typename?: 'ToolEntityResponse';
+  data?: Maybe<ToolEntity>;
+};
+
+export type ToolEntityResponseCollection = {
+  __typename?: 'ToolEntityResponseCollection';
+  data: Array<ToolEntity>;
+  meta: ResponseCollectionMeta;
+};
+
+export type ToolFiltersInput = {
+  Name?: InputMaybe<StringFilterInput>;
+  and?: InputMaybe<Array<InputMaybe<ToolFiltersInput>>>;
+  createdAt?: InputMaybe<DateTimeFilterInput>;
+  id?: InputMaybe<IdFilterInput>;
+  not?: InputMaybe<ToolFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<ToolFiltersInput>>>;
+  projects?: InputMaybe<ProjectFiltersInput>;
+  publishedAt?: InputMaybe<DateTimeFilterInput>;
+  updatedAt?: InputMaybe<DateTimeFilterInput>;
+};
+
+export type ToolInput = {
+  Logo?: InputMaybe<Scalars['ID']>;
+  Name?: InputMaybe<Scalars['String']>;
+  projects?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  publishedAt?: InputMaybe<Scalars['DateTime']>;
+};
+
+export type ToolRelationResponseCollection = {
+  __typename?: 'ToolRelationResponseCollection';
+  data: Array<ToolEntity>;
 };
 
 export type UploadFile = {
@@ -1407,7 +1450,7 @@ export type GetHomePageQuery = { __typename?: 'Query', homePage?: { __typename?:
 export type GetProductsPageQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetProductsPageQuery = { __typename?: 'Query', projectsPage?: { __typename?: 'ProjectsPageEntityResponse', data?: { __typename?: 'ProjectsPageEntity', attributes?: { __typename?: 'ProjectsPage', Sidebar: { __typename?: 'ComponentProjectsPageSidebar', languages?: { __typename?: 'LanguageRelationResponseCollection', data: Array<{ __typename?: 'LanguageEntity', attributes?: { __typename?: 'Language', Name: string, Logo: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', width?: number | null, url: string, height?: number | null, name: string } | null } | null } } | null }> } | null, frameworks?: { __typename?: 'FrameworkRelationResponseCollection', data: Array<{ __typename?: 'FrameworkEntity', attributes?: { __typename?: 'Framework', Name: string, Logo: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', width?: number | null, url: string, height?: number | null, name: string } | null } | null } } | null }> } | null }, projects?: { __typename?: 'ProjectRelationResponseCollection', data: Array<{ __typename?: 'ProjectEntity', attributes?: { __typename?: 'Project', Title: string, Slug: string, Description: string, Image: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', name: string, height?: number | null, width?: number | null, url: string } | null } | null }, languages?: { __typename?: 'LanguageRelationResponseCollection', data: Array<{ __typename?: 'LanguageEntity', attributes?: { __typename?: 'Language', Name: string, Logo: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', width?: number | null, url: string, height?: number | null, name: string } | null } | null } } | null }> } | null, frameworks?: { __typename?: 'FrameworkRelationResponseCollection', data: Array<{ __typename?: 'FrameworkEntity', attributes?: { __typename?: 'Framework', Name: string, Logo: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', width?: number | null, url: string, height?: number | null, name: string } | null } | null } } | null }> } | null } | null }> } | null } | null } | null } | null };
+export type GetProductsPageQuery = { __typename?: 'Query', projectsPage?: { __typename?: 'ProjectsPageEntityResponse', data?: { __typename?: 'ProjectsPageEntity', attributes?: { __typename?: 'ProjectsPage', Sidebar: { __typename?: 'ComponentProjectsPageSidebar', frameworks_libraries?: { __typename?: 'FrameworkLibrarieRelationResponseCollection', data: Array<{ __typename?: 'FrameworkLibrarieEntity', attributes?: { __typename?: 'FrameworkLibrarie', Name: string, Logo: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', name: string, height?: number | null, width?: number | null, url: string } | null } | null } } | null }> } | null, styles?: { __typename?: 'StyleRelationResponseCollection', data: Array<{ __typename?: 'StyleEntity', attributes?: { __typename?: 'Style', Name: string, Logo: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', name: string, height?: number | null, width?: number | null, url: string } | null } | null } } | null }> } | null, tools?: { __typename?: 'ToolRelationResponseCollection', data: Array<{ __typename?: 'ToolEntity', attributes?: { __typename?: 'Tool', Name: string, Logo: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', name: string, height?: number | null, width?: number | null, url: string } | null } | null } } | null }> } | null } } | null } | null } | null };
 
 
 export const GetHomePageDocument = gql`
@@ -1492,87 +1535,51 @@ export const GetProductsPageDocument = gql`
     data {
       attributes {
         Sidebar {
-          languages {
+          frameworks_libraries {
             data {
               attributes {
                 Name
                 Logo {
                   data {
                     attributes {
+                      name
+                      height
                       width
                       url
-                      height
-                      name
                     }
                   }
                 }
               }
             }
           }
-          frameworks {
+          styles {
             data {
               attributes {
                 Name
                 Logo {
                   data {
                     attributes {
+                      name
+                      height
                       width
                       url
-                      height
-                      name
                     }
                   }
                 }
               }
             }
           }
-        }
-        projects {
-          data {
-            attributes {
-              Title
-              Slug
-              Description
-              Image {
-                data {
-                  attributes {
-                    name
-                    height
-                    width
-                    url
-                  }
-                }
-              }
-              languages {
-                data {
-                  attributes {
-                    Name
-                    Logo {
-                      data {
-                        attributes {
-                          width
-                          url
-                          height
-                          name
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-              frameworks {
-                data {
-                  attributes {
-                    Name
-                    Logo {
-                      data {
-                        attributes {
-                          width
-                          url
-                          height
-                          name
-                        }
-                      }
+          tools {
+            data {
+              attributes {
+                Name
+                Logo {
+                  data {
+                    attributes {
+                      name
+                      height
+                      width
+                      url
                     }
                   }
                 }

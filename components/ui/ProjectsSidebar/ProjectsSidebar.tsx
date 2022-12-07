@@ -1,10 +1,78 @@
-import React from "react";
+import React, { FC } from "react";
+import { ComponentProjectsPageSidebar } from "../../../lib";
+import { NextImage } from "../NextImage";
 
-export const ProjectsSidebar = () => {
+interface Props {
+	sideBarData: ComponentProjectsPageSidebar;
+}
+
+export const ProjectsSidebar: FC<Props> = ({ sideBarData }) => {
+	const { frameworks_libraries, styles, tools } = sideBarData;
+
 	return (
-		<aside className="w-64" aria-label="Sidebar">
-			<div className="overflow-y-auto py-4 px-3 h-full bg-gray-50 dark:bg-gray-800">
-				<ul className="space-y-2">
+		<aside
+			className="max-w-[11rem] md:max-w-[15rem] h-full"
+			aria-label="Sidebar"
+		>
+			<div className="py-4 px-3 h-full overflow-y-auto bg-fourth dark:bg-gray-800 projects-scroll-sidebar">
+				<ul className="space-y-2 h-[500px]">
+					<h2 className="dark:text-primary text-center">
+						Frameworks and Libraries
+					</h2>
+					{frameworks_libraries?.data.map((frameLib) => (
+						<li
+							key={frameLib.id + frameLib.attributes?.Name!}
+							className="flex p-2 w-full text-base font-normal items-center text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer"
+						>
+							<NextImage
+								image={frameLib.attributes?.Logo?.data?.attributes!}
+								width={30}
+								height={30}
+							/>
+
+							<span className="text-sm ml-2 md:text-sm md:ml-3">
+								{frameLib.attributes?.Name}
+							</span>
+						</li>
+					))}
+					<h2 className="dark:text-primary text-center">Styles</h2>
+					{styles?.data.map((frameLib) => (
+						<li
+							key={frameLib.id + frameLib.attributes?.Name!}
+							className="flex p-2 text-base font-normal items-center text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer"
+						>
+							<div className="h-8 md:h-auto md:max max-w-[32px] md:w-auto">
+								<NextImage
+									image={frameLib.attributes?.Logo?.data?.attributes!}
+									width={30}
+									height={30}
+								/>
+							</div>
+							<span className="text-sm ml-2 md:text-sm md:ml-3">
+								{frameLib.attributes?.Name}
+							</span>
+						</li>
+					))}
+					<h2 className="dark:text-primary text-center">Tools</h2>
+					{tools?.data.map((tool) => (
+						<li
+							key={tool.id + tool.attributes?.Name!}
+							className="flex p-2 text-base font-normal items-center text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer"
+						>
+							<div className="h-8 md:h-auto md:max max-w-[32px] md:w-auto">
+								<NextImage
+									image={tool.attributes?.Logo?.data?.attributes!}
+									width={30}
+									height={30}
+								/>
+							</div>
+							<span className="text-sm ml-2 md:text-sm md:ml-3">
+								{tool.attributes?.Name}
+							</span>
+						</li>
+					))}
+				</ul>
+				{/* <ul className="space-y-2">
 					<li>
 						<a
 							href="#"
@@ -148,7 +216,7 @@ export const ProjectsSidebar = () => {
 							<span className="flex-1 ml-3 whitespace-nowrap">Sign Up</span>
 						</a>
 					</li>
-				</ul>
+				</ul> */}
 			</div>
 		</aside>
 	);

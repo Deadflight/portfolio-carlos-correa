@@ -24,7 +24,11 @@ const HomePage: FC<Props> = ({ homePageData }) => {
 					<CVButton {...Hero.CVButton} />
 				</article>
 				<article className="px-6 h-auto w-auto max-w-sm max-h-80 md:max-w-full md:max-h-[440px] md:w-full md:h-full flex justify-center ">
-					<NextImage image={Hero.HeroImage.data?.attributes!} />
+					<NextImage
+						image={Hero.HeroImage.data?.attributes!}
+						width={500}
+						height={500}
+					/>
 				</article>
 			</section>
 			<section className="bg-primary px-5 py-10 dark:bg-secondary dark:text-primary md:px-10 md:py-14 flex flex-col justify-center items-center space-y-4 md:flex-row md:space-y-0">
@@ -33,7 +37,11 @@ const HomePage: FC<Props> = ({ homePageData }) => {
 					bodyText={IntroduceMe.IntroduceBodyText}
 				/>
 				<article className="px-6 max-w-sm h-auto w-auto max-h-80 md:max-w-full md:max-h-[440px] md:w-auto md:h-auto flex justify-center">
-					<NextImage image={IntroduceMe.Avatar.data?.attributes!} />
+					<NextImage
+						image={IntroduceMe.Avatar.data?.attributes!}
+						width={500}
+						height={500}
+					/>
 				</article>
 			</section>
 		</MainLayout>

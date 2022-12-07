@@ -10,17 +10,16 @@ import {
 } from "../../lib";
 
 interface Props {
-	productPageData: ProjectsPage;
+	productPageData?: ProjectsPage;
 }
 
 const ProjectsPage: FC<Props> = ({ productPageData }) => {
-	const { Sidebar, projects } = productPageData;
+	const { Sidebar, projects } = productPageData!;
 
-	console.log({ Sidebar, projects });
 	return (
 		<MainLayout title="Projects">
-			<section className="h-full">
-				<ProjectsSidebar />
+			<section className="">
+				<ProjectsSidebar sideBarData={Sidebar} />
 			</section>
 		</MainLayout>
 	);
@@ -32,18 +31,18 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
 			query: GET_PRODUCTSPAGE,
 		});
 
-		if (!data.projectsPage?.data?.attributes)
+		if (!data.projectsPage?.data?.attributes) {
 			return {
 				notFound: true,
 			};
+		}
 
 		return {
 			props: {
 				productPageData: data.projectsPage.data.attributes,
 			},
 		};
-	} catch (error) {
-		console.log(error);
+	} catch (error: any) {
 		return {
 			notFound: true,
 		};
