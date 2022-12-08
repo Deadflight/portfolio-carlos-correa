@@ -32,6 +32,26 @@ module.exports = {
 			},
 			animation: {
 				"spin-slow": "spin 4s linear infinite",
+				"slide-in": "slideIn 1s both",
+				"fade-in": "fadeIn 0.5s both",
+			},
+			keyframes: {
+				slideIn: {
+					"0%": {
+						width: "160px",
+					},
+					"100%": {
+						width: "161.56px",
+					},
+				},
+				fadeIn: {
+					"0%": {
+						opacity: "0",
+					},
+					"100%": {
+						opacity: "1",
+					},
+				},
 			},
 		},
 	},

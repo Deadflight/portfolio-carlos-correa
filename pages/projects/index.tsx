@@ -4,22 +4,21 @@ import { MainLayout } from "../../layouts";
 import { GetStaticProps } from "next";
 import {
 	apolloClient,
+	GetProjectsPageQuery,
 	GET_PRODUCTSPAGE,
-	GetProductsPageQuery,
 	ProjectsPage,
 } from "../../lib";
 
 interface Props {
-	productPageData?: ProjectsPage;
+	projectsPageData: ProjectsPage;
 }
 
-const ProjectsPage: FC<Props> = ({ productPageData }) => {
-	const { Sidebar, projects } = productPageData!;
-
+const ProjectsNextPage: FC<Props> = ({ projectsPageData }) => {
 	return (
 		<MainLayout title="Projects">
-			<section className="">
-				<ProjectsSidebar sideBarData={Sidebar} />
+			<section className="flex">
+				<ProjectsSidebar sideBarData={projectsPageData.ProjectsSidebar} />
+				<div className="w-full max-w-full"></div>
 			</section>
 		</MainLayout>
 	);
@@ -27,11 +26,11 @@ const ProjectsPage: FC<Props> = ({ productPageData }) => {
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
 	try {
-		const { data } = await apolloClient.query<GetProductsPageQuery>({
+		const { data } = await apolloClient.query<GetProjectsPageQuery>({
 			query: GET_PRODUCTSPAGE,
 		});
 
-		if (!data.projectsPage?.data?.attributes) {
+		if (!data) {
 			return {
 				notFound: true,
 			};
@@ -39,7 +38,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
 
 		return {
 			props: {
-				productPageData: data.projectsPage.data.attributes,
+				projectsPageData: data.projectsPage?.data?.attributes,
 			},
 		};
 	} catch (error: any) {
@@ -49,4 +48,4 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
 	}
 };
 
-export default ProjectsPage;
+export default ProjectsNextPage;

@@ -1,56 +1,64 @@
 import { gql } from "@apollo/client";
 
 export const GET_PRODUCTSPAGE = gql`
-	query GetProductsPage {
+	query GetProjectsPage {
 		projectsPage {
 			data {
 				attributes {
-					Sidebar {
-						frameworks_libraries {
-							data {
-								attributes {
-									Name
-									Logo {
-										data {
-											attributes {
-												name
-												height
-												width
-												url
+					ProjectsSidebar {
+						SidebarItems {
+							libraries_frameworks {
+								data {
+									attributes {
+										FrameLibSidebarItems {
+											Name
+											Logo {
+												data {
+													attributes {
+														url
+														height
+														width
+														name
+													}
+												}
 											}
 										}
 									}
 								}
 							}
-						}
-						styles {
-							data {
-								attributes {
-									Name
-									Logo {
-										data {
-											attributes {
-												name
-												height
-												width
-												url
+							styles {
+								data {
+									attributes {
+										StyleSibarItems {
+											Name
+											Logo {
+												data {
+													attributes {
+														url
+														height
+														width
+														name
+													}
+												}
 											}
 										}
 									}
 								}
 							}
-						}
-						tools {
-							data {
-								attributes {
-									Name
-									Logo {
-										data {
-											attributes {
-												name
-												height
-												width
-												url
+							tools {
+								data {
+									attributes {
+										ToolsSidebarItems {
+											Name
+											Logo {
+												data {
+													attributes {
+														url
+														height
+														width
+														name
+													}
+												}
 											}
 										}
 									}
