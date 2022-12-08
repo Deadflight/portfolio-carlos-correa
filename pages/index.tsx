@@ -28,6 +28,7 @@ const HomePage: FC<Props> = ({ homePageData }) => {
 						image={Hero.HeroImage.data?.attributes!}
 						width={500}
 						height={500}
+						priority
 					/>
 				</article>
 			</section>

@@ -6,8 +6,14 @@ interface ImageProps {
 	image: UploadFile;
 	width: number;
 	height: number;
+	priority?: boolean;
 }
-export const NextImage: FC<ImageProps> = ({ image, width, height }) => {
+export const NextImage: FC<ImageProps> = ({
+	image,
+	width,
+	height,
+	priority = false,
+}) => {
 	const { name, url } = image;
 	return (
 		<Image
@@ -17,6 +23,7 @@ export const NextImage: FC<ImageProps> = ({ image, width, height }) => {
 			height={height}
 			placeholder={width <= 40 ? "empty" : "blur"}
 			blurDataURL="data:..."
+			priority={priority}
 		/>
 	);
 };
