@@ -25,7 +25,6 @@ module.exports = {
 				tertiary: "#2ac5f4ff",
 				fourth: "#ebedf0",
 				fith: "#494A4D",
-				test: "linear-gradient(0deg,#fff,hsla(0,0%,100%,0)) #d0d3d4;",
 				twitter: "#1DA1F2",
 				facebook: "#4267B2",
 				linkedin: " #0e76a8",
@@ -33,6 +32,26 @@ module.exports = {
 			},
 			animation: {
 				"spin-slow": "spin 4s linear infinite",
+				"slide-in": "slideIn 1s both",
+				"fade-in": "fadeIn 0.5s both",
+			},
+			keyframes: {
+				slideIn: {
+					"0%": {
+						width: "160px",
+					},
+					"100%": {
+						width: "161.56px",
+					},
+				},
+				fadeIn: {
+					"0%": {
+						opacity: "0",
+					},
+					"100%": {
+						opacity: "1",
+					},
+				},
 			},
 		},
 	},

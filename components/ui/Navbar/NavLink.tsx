@@ -16,7 +16,7 @@ export const NavLink: FC<Props> = ({ link }) => {
 	const isActiveLink = pathname === link.to;
 
 	return (
-		<Link href={link.to} className={`md:flex`}>
+		<Link href={link.to} className={`md:flex`} aria-label={link.name}>
 			{link.icon}
 
 			<span

@@ -1,12 +1,12 @@
 import React from "react";
 import { MainLayout } from "../layouts";
 
-const ServerErrorPage = () => {
+const NotFoundPage = () => {
 	return (
-		<MainLayout title="Carlos Correa - Server Error Page">
+		<MainLayout title="Carlos Correa - Not Found Page">
 			ServerErrorPage
 		</MainLayout>
 	);
 };
 
-export default ServerErrorPage;
+export default NotFoundPage;

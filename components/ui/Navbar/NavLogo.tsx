@@ -8,7 +8,7 @@ interface Props {
 
 export const NavLogo: FC<Props> = ({ width, height }) => {
 	return (
-		<Link href={"/"} className="inline-block">
+		<Link href={"/"} className="inline-block" aria-label="Logo Image">
 			<svg
 				width={width}
 				height={height}

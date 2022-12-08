@@ -82,7 +82,7 @@ const SOCIAL_ICONS: ISocialIcon[] = [
 
 export const Navbar = () => {
 	return (
-		<nav className="h-14 w-full px-5 bg-primary dark:bg-secondary shadow-[2px_-0.5px_20px_-10px_rgba(0,0,0,0.43)] md:shadow-md flex items-center justify-between fixed bottom-0 md:relative md:px-10 md:py-8">
+		<nav className="h-14 w-full z-10 px-5 bg-primary dark:bg-secondary shadow-[2px_-0.5px_20px_-10px_rgba(0,0,0,0.43)] md:shadow-md flex items-center justify-between fixed bottom-0 md:relative md:px-10 md:py-8">
 			<NavHeader />
 			<NavList navLinks={NAV_LINKS} />
 			<div className="fixed top-2 right-2 md:flex md:relative md:top-0 md:right-0 md:space-x-4 flex items-center">

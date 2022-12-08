@@ -26,6 +26,7 @@ export const CVButton: FC<ComponentHomePageCvButton> = ({
 				download
 				target="_blank"
 				rel="noopener noreferrer"
+				href=""
 			/>
 			<button
 				onClick={onCVDownload}

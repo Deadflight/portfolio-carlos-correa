@@ -33,7 +33,11 @@ export const ThemeButton = () => {
 	};
 
 	return (
-		<button className="rounded-full" onClick={handleChangeTheme}>
+		<button
+			className="rounded-full"
+			onClick={handleChangeTheme}
+			aria-label={"Theme Button"}
+		>
 			<BsMoon
 				size={20}
 				className="fill-gray-500 hover:fill-tertiary flex dark:hidden duration-300"
